@@ -4,9 +4,7 @@ const prisma = require('../src/lib/prisma');
 
 describe('Auth Endpoints', () => {
   beforeAll(async () => {
-    // Note: tests usually shouldn't delete all users in the production or shared database,
-    // but since we don't have a dedicated test db URL configured in the plan,
-    // we will run this test carefully. It deletes a specific test user if it exists.
+    // cleanup test user before testing
     await prisma.user.deleteMany({ where: { email: 'test@example.com' } });
   });
 
